@@ -6,6 +6,24 @@
 
 #include <ctype.h>
 
+void removeExtraSpaces(char properNoun[]) {
+    int i, j;
+    for (i = 0, j = 0; properNoun[i] != '\0'; i++) {
+
+        if (properNoun[i] != ' ' || (i > 0 && properNoun[i - 1] != ' ')) {
+            properNoun[j++] = properNoun[i];
+        }
+
+    }
+    properNoun[j] = '\0';
+
+    if (j > 0 && properNoun[j - 1] == ' ') {
+        properNoun[j - 1] = '\0';
+    }
+    capitalizeInitials(properNoun);
+
+}
+
 void convertToLowerCaseExceptInitials(char properNoun[]){
 
     for(int i = 1; properNoun[i] != '\0'; i++){
@@ -32,7 +50,12 @@ void capitalizeInitials(char properNoun[]){
         if(properNoun[i] == ' '){
             i++;
             if(properNoun[i] != '\0'){
-                properNoun[i] = toupper(properNoun[i]);
+
+                if(properNoun[i+1] == ' '){
+                    properNoun[i] = tolower(properNoun[i]);
+                }else{
+                    properNoun[i] = toupper(properNoun[i]);
+                }
             }
         }
 
