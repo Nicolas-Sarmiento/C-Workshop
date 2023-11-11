@@ -11,7 +11,7 @@ char complete[40];
 int dates(char date[]);
 void dateWriting(char day[], char month[], char year[]);
 int verifyDate(char date[]);
-char *principal(char date[]);
+int principal();
 
 
 

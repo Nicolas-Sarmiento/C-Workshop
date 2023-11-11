@@ -85,7 +85,6 @@ void dateWriting(char day[], char month[], char year[]){
 
     strcat(complete, aux);
 
-    //ACA ESTA EL ERROR
     strcat(complete, months[monthInt - 1]);
 
     strcat(complete, " del ");
@@ -96,10 +95,15 @@ void dateWriting(char day[], char month[], char year[]){
 }
 
 //metodo para el main
-char *principal(char date[]){
+int principal(){
+    char date[30];
+    printf("Digita la fecha con el formato dd/mm/aaaa: ");
+    //Una vez impreso lo de arriba, me pide una entrada, se supone que no deberia ser asi
+    scanf("%s", date);
     if(verifyDate(date)){
-        return complete;
-    }else return NULL;
+        printf("%s", complete);
+        return 1;
+    }else printf("Formato equivocado, la fecha debe ser coherente y recuerda que debe tener esta composicion 'dd/mm/aaaa' "); return 0;
 }
 
 
