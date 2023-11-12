@@ -5,9 +5,9 @@
 #ifndef C_WORKSHOP_PROPERNOUN_H
 #define C_WORKSHOP_PROPERNOUN_H
 
-void removeExtraSpaces(char properNoun[]);
-void capitalizeInitials(char properNoun[]);
-void convertToLowerCaseExceptInitials(char properNoun[]);
+int removeExtraSpaces(char properNoun[]);
+int capitalizeInitials(char properNoun[]);
+int convertToLowerCaseExceptInitials(char properNoun[]);
 
 #endif //C_WORKSHOP_PROPERNOUN_H
 

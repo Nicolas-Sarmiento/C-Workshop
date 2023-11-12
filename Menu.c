@@ -2,6 +2,7 @@
 // Created by sarmi on 11/11/2023.
 //
 #include <stdio.h>
+#include <string.h>
 #include "RomansNumbers.h"
 #include "AmicableNumbers.h"
 #include "MagicSquare.h"
@@ -9,6 +10,10 @@
 #include "PrimeNumbers.h"
 #include "EgotisticalNumber.h"
 #include "InnerProduct.h"
+#include "ProperNoun.h"
+#include "MatrixMultiplication.h"
+#include "Dates.h"
+
 
 
 int validNaturalNumber(){
@@ -113,4 +118,105 @@ void innerProductMenu(){
     result = innerProduct(arrayOne, arrayTwo, size);
 
     printf("The inner product is: %d", result);
+}
+
+extern void multiplyMatricesMenu(){
+    int rows1, cols1, rows2, cols2;
+
+    printf("-------- Matrix Multiplication ---------\n"
+           "MATRIX NUMBER ONE\n");
+
+    printf("Enter number of rows: ");
+    rows1 = validNaturalNumber();
+    printf("Enter number of columns: ");
+    cols1 = validNaturalNumber();
+    //scanf("%d %d", &rows1, &cols1);
+
+    printf("MATRIX NUMBER TWO\n"
+           "Enter number of rows: ");
+    rows2 = validNaturalNumber();
+    printf("Enter number of columns: ");
+    cols2 = validNaturalNumber();
+    //scanf("%d %d", &rows2, &cols2);
+
+    if (cols1 != rows2) {
+        printf("Matrix multiplication is not possible. The number of columns of the first matrix must be equal to the number of rows of the second matrix..\n");
+        return;
+    }
+
+    int matrix1[rows1][cols1];
+    int matrix2[rows2][cols2];
+    int resultMatrix[rows1][cols2];
+
+    printf("Enter the elements of the first matrix, do it row by row, select the number and hit enter:\n");
+    for (int i = 0; i < rows1; i++) {
+        printf("Row %d: ", i + 1);
+        for (int j = 0; j < cols1; j++) {
+            printf("Enter element %d: ", j + 1);
+            matrix1[i][j] = validNaturalNumber();
+        }
+    }
+
+    printf("Enter the elements of the second matrix, do it row by row, you can enter the row divided by spaces '1 2 3 4' before hitting enter.:\n");
+    for (int i = 0; i < rows2; i++) {
+        printf("Row %d: ", i + 1);
+        for (int j = 0; j < cols2; j++) {
+            printf("Enter element %d: ", j + 1);
+            matrix2[i][j] = validNaturalNumber();
+        }
+    }
+
+    multiplyMatrices(rows1, cols1, matrix1, rows2, cols2, matrix2, resultMatrix);
+
+    printf("Matrix 1:\n");
+    displayMatrix(rows1, cols1, matrix1);
+
+    printf("\nMatrix 2:\n");
+    displayMatrix(rows2, cols2, matrix2);
+
+    printf("\nResultant matrix:\n");
+    displayMatrix(rows1, cols2, resultMatrix);
+}
+
+void datesMenu(){
+
+    printf("-------- Dates ---------\n");
+    char date[30];
+    int i = 0;
+    while (!i){
+        printf("Type the date in the format dd/mm/yyyy: ");
+
+        fgets(date, sizeof(date), stdin);
+        date[strcspn(date, "\n")] = '\0';
+
+        char *result = verifyDate(date);
+        if(result != NULL){
+            i = 1;
+            printf("Date: %s\n", result);
+        }else{
+            printf("Wrong format, the date must be consistent and remember that it must have this composition 'dd/mm/yyyy'.\n");
+        }
+    }
+}
+
+void properNounMenu(){
+    printf("-------- Proper noun ---------\n");
+    char properNoun[40];
+
+    int aux = 0;
+    while (aux == 0 ){
+        printf("Enter your full name: ");
+
+        fgets(properNoun, sizeof(properNoun), stdin);
+        properNoun[strcspn(properNoun, "\n")] = '\0';
+
+        aux = removeExtraSpaces(properNoun);
+        if(aux){
+            printf("New format: %s\n", properNoun);
+        }else{
+            printf("The name cannot contain numerical characters or special characters, try to use only letters.\n");
+        }
+    }
+
+
 }

@@ -8,12 +8,15 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+char day[4], month[4], year[5];
+char complete[40];
+
 const char *months[] = {
         "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre"
         , "Noviembre", "Diciembre"
 };
 
-int dates(char date[]){
+char* dates(char date[]){
     int aux = 0;
 
     for (int i = 0, j = 0; date[i] != '\0' ; ++i) {
@@ -37,26 +40,26 @@ int dates(char date[]){
 
     if(dayInt <=31 && mothInt <=12 && yearInt <= 9999){
         dateWriting(day, month, year);
-        return 1;
+        return complete;
     }else{
-        return 0;
+        return NULL;
     }
 
 }
 
-int verifyDate(char date[]){
+char *verifyDate(char date[]){
 
     int i, j, aux = 0;
     for (i = 0, j = 0; date[i] != '\0'; i++) {
 
         if(!(isdigit(date[i]) || date[i] == '/')){
-            return 0;
+            return NULL;
         }
 
         if(date[i] == '/'){
             aux++;
             if(aux > 2){
-                return 0;
+                return NULL;
             }
         }
 
@@ -94,17 +97,6 @@ void dateWriting(char day[], char month[], char year[]){
 
 }
 
-//metodo para el main
-int principal(){
-    char date[30];
-    printf("Digita la fecha con el formato dd/mm/aaaa: ");
-    //Una vez impreso lo de arriba, me pide una entrada, se supone que no deberia ser asi
-    scanf("%s", date);
-    if(verifyDate(date)){
-        printf("%s", complete);
-        return 1;
-    }else printf("Formato equivocado, la fecha debe ser coherente y recuerda que debe tener esta composicion 'dd/mm/aaaa' "); return 0;
-}
 
 
 

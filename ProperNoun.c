@@ -6,10 +6,14 @@
 
 #include <ctype.h>
 
-void removeExtraSpaces(char properNoun[]) {
+int removeExtraSpaces(char properNoun[]) {
     int i, j;
+
     for (i = 0, j = 0; properNoun[i] != '\0'; i++) {
 
+        if (!isalpha(properNoun[i]) && properNoun[i] != ' ') {
+            return 0;
+        }
         if (properNoun[i] != ' ' || (i > 0 && properNoun[i - 1] != ' ')) {
             properNoun[j++] = properNoun[i];
         }
@@ -20,11 +24,11 @@ void removeExtraSpaces(char properNoun[]) {
     if (j > 0 && properNoun[j - 1] == ' ') {
         properNoun[j - 1] = '\0';
     }
-    capitalizeInitials(properNoun);
 
+    return capitalizeInitials(properNoun);
 }
 
-void convertToLowerCaseExceptInitials(char properNoun[]){
+int convertToLowerCaseExceptInitials(char properNoun[]){
 
     for(int i = 1; properNoun[i] != '\0'; i++){
 
@@ -37,12 +41,15 @@ void convertToLowerCaseExceptInitials(char properNoun[]){
         }
 
     }
+    return 1;
 
 }
-void capitalizeInitials(char properNoun[]){
+int capitalizeInitials(char properNoun[]){
 
     if(properNoun[0] != '\0'){
         properNoun[0] = toupper(properNoun[0]);
+    }else{
+        return 0;
     }
 
     for(int i = 1; properNoun[i] != '\0'; i++){
@@ -60,5 +67,5 @@ void capitalizeInitials(char properNoun[]){
         }
 
     }
-    convertToLowerCaseExceptInitials(properNoun);
+    return convertToLowerCaseExceptInitials(properNoun);
 }

@@ -28,6 +28,7 @@ int main() {
                 primeNumbersMenu();
                 break;
             case 3:
+                properNounMenu();
                 break;
             case 4:
                 egoisticalNumberMenu();
@@ -36,11 +37,13 @@ int main() {
                 amicableNumbersMenu();
                 break;
             case 6:
+                datesMenu();
                 break;
             case 7:
                 innerProductMenu();
                 break;
             case 8:
+                multiplyMatricesMenu();
                 break;
             case 9:
                 magicSquareMenu();
