@@ -30,7 +30,7 @@ int validNaturalNumber(){
 }
 
 void romanNumbersMenu(){
-    int decimalNumber = 0;
+    int decimalNumber;
     printf("------- CONVERT DECIMAL NUMBERS TO ROMANS --------\n");
     printf("Input the number to convert it to a roman number \nEnter the decimal number -> ");
     decimalNumber = validNaturalNumber();
@@ -39,8 +39,8 @@ void romanNumbersMenu(){
 }
 
 void amicableNumbersMenu(){
-    int numberOne = 0;
-    int numberTwo = 0;
+    int numberOne;
+    int numberTwo;
     printf("-------- AMICABLE NUMBERS ---------\n");
     printf("Input two numbers to verify if those are amicable numbers. \nEnter the first number -> ");
     numberOne = validNaturalNumber();
@@ -51,7 +51,7 @@ void amicableNumbersMenu(){
 }
 
 void magicSquareMenu(){
-    int order = 0;
+    int order;
     printf("-------- MAGIC SQUARE ---------\n");
     printf("Input the order to create a magic square. The number must be a natural odd number greater than 2 (two) \nYour square order -> ");
     order = validNaturalNumber();

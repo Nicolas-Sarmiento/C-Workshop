@@ -4,6 +4,7 @@
 
 #ifndef C_WORKSHOP_MENU_H
 #define C_WORKSHOP_MENU_H
+extern int validNaturalNumber();
 extern void romanNumbersMenu();
 extern void amicableNumbersMenu();
 extern void magicSquareMenu();
