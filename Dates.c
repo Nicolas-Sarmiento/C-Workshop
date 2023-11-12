@@ -37,7 +37,8 @@ char* dates(char date[]){
     int mothInt = atoi(month);
     int yearInt = atoi(year);
 
-    if(dayInt <=31 && mothInt <=12 && yearInt <= 2023){
+    if(dayInt <=31 && mothInt <=12 && yearInt <= 9999){
+
         return dateWriting(day, month, year);
     }else{
         return NULL;
