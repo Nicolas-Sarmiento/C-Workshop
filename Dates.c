@@ -9,7 +9,6 @@
 #include <ctype.h>
 
 char day[4], month[4], year[5];
-char complete[40];
 
 const char *months[] = {
         "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre"
@@ -38,9 +37,8 @@ char* dates(char date[]){
     int mothInt = atoi(month);
     int yearInt = atoi(year);
 
-    if(dayInt <=31 && mothInt <=12 && yearInt <= 9999){
-        dateWriting(day, month, year);
-        return complete;
+    if(dayInt <=31 && mothInt <=12 && yearInt <= 2023){
+        return dateWriting(day, month, year);
     }else{
         return NULL;
     }
@@ -78,23 +76,25 @@ char *verifyDate(char date[]){
 }
 
 
-void dateWriting(char day[], char month[], char year[]){
+char* dateWriting(char day[], char month[], char year[]){
 
     int monthInt = atoi(month);
 
     char aux[] = " de ";
+    char* dateWrite = ( char* ) malloc(40);
+    dateWrite[0] = '\0';
 
-    strcpy(complete, day);
+    strcat(dateWrite, day);
 
-    strcat(complete, aux);
+    strcat(dateWrite, aux);
 
-    strcat(complete, months[monthInt - 1]);
+    strcat(dateWrite, months[monthInt - 1]);
 
-    strcat(complete, " del ");
+    strcat(dateWrite, " del ");
 
-    strcat(complete, year);
+    strcat(dateWrite, year);
 
-
+    return dateWrite;
 }
 
 

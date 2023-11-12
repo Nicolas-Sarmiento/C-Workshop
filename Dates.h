@@ -7,7 +7,7 @@
 
 
 char *dates(char date[]);
-void dateWriting(char day[], char month[], char year[]);
+char* dateWriting(char day[], char month[], char year[]);
 char *verifyDate(char date[]);
 
 
