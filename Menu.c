@@ -6,6 +6,10 @@
 #include "AmicableNumbers.h"
 #include "MagicSquare.h"
 #include "Menu.h"
+#include "PrimeNumbers.h"
+#include "EgotisticalNumber.h"
+#include "InnerProduct.h"
+
 
 int validNaturalNumber(){
     int number = -1;
@@ -54,4 +58,59 @@ void magicSquareMenu(){
 
     printf("The magic square the order %d is:\n", order);
     printSquareMatrix( magicSquareMatrix, order );
+}
+
+void primeNumbersMenu(){
+    int number = 0;
+    printf("-------- PRIME NUMBER ---------\n");
+    do{
+        printf("Input the number you want to express in prime factors: \n");
+        number = validNaturalNumber();
+        if(number <=1){
+            printf("Please enter a number greater than 1.\n");
+        }
+    } while (number <= 1);
+    primeNumbers(number);
+}
+void egoisticalNumberMenu(){
+    int number = 0;
+    printf("-------- EGOISTICAL NUMBER ---------\n");
+    printf("Input the number you want to check if it is egoistical: \n");
+    number = validNaturalNumber();
+
+    int result = isEgotistical(number);
+
+    if(isEgotistical(number) == 1){
+        printf( "The number %d is egoistical", number);
+        return;
+    }
+    printf( "The number %d is not egoistical", number);
+}
+
+void innerProductMenu(){
+    int size;
+    int result;
+    printf("-------- EGOISTICAL NUMBER ---------\n");
+    printf("Input the size of the array:  \n");
+    size = validNaturalNumber();
+    int arrayOne[size];
+    int arrayTwo[size];
+
+    for(int i = 0; i<size; i++){
+        printf("Input the %d number of the first array:  \n", i+1);
+        arrayOne[i] = validNaturalNumber();
+    }
+
+    for(int i = 0; i<size; i++){
+        printf("Input the %d number of the second array:  \n", i+1);
+        arrayTwo[i] = validNaturalNumber();
+    }
+    if(sizeof(arrayOne)/ sizeof(arrayOne[0]) !=size || sizeof(arrayTwo)/ sizeof(arrayTwo[0]) !=size){
+        printf("It is not possible to find the inner product of two matrices of different sizes");
+        return;
+    }
+
+    result = innerProduct(arrayOne, arrayTwo, size);
+
+    printf("The inner product is: %d", result);
 }
