@@ -113,5 +113,4 @@ void innerProductMenu(){
     result = innerProduct(arrayOne, arrayTwo, size);
 
     printf("The inner product is: %d", result);
-
 }
