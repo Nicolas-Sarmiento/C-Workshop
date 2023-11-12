@@ -6,7 +6,8 @@
 #include <stdio.h>
 
 int primeNumbers(int n) {
-    int count;
+
+    int count = 0;
     printf("los factores primos de %d son: ", n);
     for (int i = 2; i <= n; i++) {
         if(count > 0){

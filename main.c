@@ -25,10 +25,12 @@ int main() {
                 romanNumbersMenu();
                 break;
             case 2:
+                primeNumbersMenu();
                 break;
             case 3:
                 break;
             case 4:
+                egoisticalNumberMenu();
                 break;
             case 5:
                 amicableNumbersMenu();
@@ -36,6 +38,7 @@ int main() {
             case 6:
                 break;
             case 7:
+                innerProductMenu();
                 break;
             case 8:
                 break;
