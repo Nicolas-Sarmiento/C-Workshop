@@ -66,7 +66,7 @@ char *calcDigitsInRoman( int number, int minValue, int maxValue ){
 
 char *romanNumber( int number ) {
     if ( number > 4000 || number <= 0 ){
-        return "Not exists";
+        return "does not exists";
     }
 
     char *result = (char *) malloc( 100);
